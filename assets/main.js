@@ -403,7 +403,7 @@ window.main_js = function () {
 
     function Ae(url, size = null, crop = false, forceResize = false) {
         // If the URL is not from Blogspot or Googleusercontent, return it as is
-        if (!url.includes(".blogspot.com") && !url.includes(".googleusercontent.com") && !url.include('.itn24h.com')) {
+        if (!url.includes(".blogspot.com") && !url.includes(".googleusercontent.com") && !url.includes('.itn24h.com')) {
             return url;
         }
 

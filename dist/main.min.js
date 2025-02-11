@@ -402,7 +402,7 @@ window.main_js = function () {
     }
 
     function isValidNumber(value) {
-        return !isNaN(value) && value.trim() !== "";
+        return value && !isNaN(value) && value.trim() !== "";
     }
     
     function isValidSizeFormat(value) {

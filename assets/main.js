@@ -401,6 +401,14 @@ window.main_js = function () {
         return e
     }
 
+    function isValidNumber(value) {
+        return !isNaN(value) && value.trim() !== "";
+    }
+    
+    function isValidSizeFormat(value) {
+        return typeof value === "string" && (value.includes("x") || value.includes("w") || value.includes("h"));
+    }
+
     function Ae(url, size = null, crop = false, forceResize = false) {
         // If the URL is not from Blogspot or Googleusercontent, return it as is
         if (!url.includes(".blogspot.com") && !url.includes(".googleusercontent.com") && !url.includes('.itn24h.com')) {

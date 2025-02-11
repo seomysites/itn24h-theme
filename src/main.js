@@ -354,13 +354,20 @@ window.main_js = function () {
         }))
     }
 
-    function Ae2(e) {
+    function Ae(e) {
         let t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null,
             a = arguments.length > 2 && void 0 !== arguments[2] && arguments[2],
             i = arguments.length > 3 && void 0 !== arguments[3] && arguments[3];
-        if (-1 == e.indexOf(".blogspot.com") && -1 == e.indexOf(".googleusercontent.com")) return e;
+        var url = e;
+        
+        if (-1 == e.indexOf(".blogspot.com") && -1 == e.indexOf(".googleusercontent.com") && !url.includes('.itn24h.com')) {
+            return e;
+        }
+
+        
         var n = 0, r = 0, s = 0, o = 0, l = 0, c = e = e.replace("http://", "https://"),
             d = !u && REPLACE_IMAGE_TO_WEBP;
+
         if (v(t)) n = r = Math.ceil(Number(t)); else if (y(t)) if (-1 !== t.indexOf("x")) {
             var h = t.split("x");
             n = h[0], r = h[1], v(n) && v(r) && (n = Math.ceil(Number(n)), r = Math.ceil(Number(r)))
@@ -369,6 +376,22 @@ window.main_js = function () {
             r = Math.ceil(Number(t.replace("h", "")))
         } else if (!d) return c;
         if (n == r && 0 == n && !d) return e;
+
+        if (url.includes(".itn24h.com")) {
+            let currentSize = url.split('/')[3];
+            newUrl = url.replace(`/${currentSize}/`, `/cover:${n}x${r}/`);
+
+            if (d) {
+                let extensions = ["png", "gif", "jpeg", "jpg", "bmp"];
+                for (let i = 0; i < extensions.length; i++) {
+                    const ext = extensions[i];
+                    newUrl = newUrl.replace("." + ext, ".webp").replace("." + ext.toUpperCase(), ".webp");
+                }
+            }
+
+            return newUrl;
+        }
+
         var m = "/";
         -1 != e.indexOf("=") && -1 != e.indexOf(".googleusercontent.com") && (m = "="), e = e.split(m);
         for (var p = 0; p < e.length; p++) if (!(e[p].length > 17) && (e[p].has("-c") || e[p].has("s") || e[p].has("h") || e[p].has("w"))) {
@@ -378,6 +401,7 @@ window.main_js = function () {
                 break
             }
         }
+
         if (p < e.length) {
             if (d && (n == r && 0 == r || null == t)) ; else if (n == r) {
                 if (n < l && !i) return c;
@@ -399,110 +423,6 @@ window.main_js = function () {
             for (p = 0; p < f.length; p++) e = (e = e.replace("." + f[p], ".webp")).replace("." + f[p].toUpperCase(), ".webp")
         }
         return e
-    }
-
-    function isValidNumber(value) {
-        return value && !isNaN(value) && value.trim() !== "";
-    }
-    
-    function isValidSizeFormat(value) {
-        return typeof value === "string" && (value.includes("x") || value.includes("w") || value.includes("h"));
-    }
-
-    function Ae(url, size = null, crop = false, forceResize = false) {
-        // If the URL is not from Blogspot or Googleusercontent, return it as is
-        if (!url.includes(".blogspot.com") && !url.includes(".googleusercontent.com") && !url.includes('.itn24h.com')) {
-            return url;
-        }
-
-        let width = 0, height = 0, originalWidth = 0, originalHeight = 0, originalSize = 0;
-        let secureUrl = url.replace("http://", "https://"); // Ensure HTTPS
-        let convertToWebP = !u && REPLACE_IMAGE_TO_WEBP; // Flag for WebP conversion
-
-        // Parse the size parameter if provided
-        if (isValidNumber(size)) {
-            width = height = Math.ceil(Number(size));
-        } else if (isValidSizeFormat(size)) {
-            if (size.includes("x")) {
-                let dimensions = size.split("x");
-                width = dimensions[0];
-                height = dimensions[1];
-                if (isValidNumber(width) && isValidNumber(height)) {
-                    width = Math.ceil(Number(width));
-                    height = Math.ceil(Number(height));
-                }
-            } else if (size.includes("w") && isValidNumber(size.replace("w", ""))) {
-                width = Math.ceil(Number(size.replace("w", "")));
-            } else if (size.includes("h") && isValidNumber(size.replace("h", ""))) {
-                height = Math.ceil(Number(size.replace("h", "")));
-            } else {
-                return secureUrl;
-            }
-        } else if (!convertToWebP) {
-            return secureUrl;
-        }
-
-        // If both width and height are zero and no WebP conversion, return original URL
-        if (width === height && width === 0 && !convertToWebP) {
-            return url;
-        }
-
-        if (convertToWebP && (width === height && height === 0 || size === null)) {
-            // Do nothing (skip modification if WebP is only applied)
-            let newUrl = url;
-        } else if (url.includes(".itn24h.com")) {
-            let currentSize = url.split('/')[3];
-            let newUrl = url.replace(`/${currentSize}/`, (crop ? `/cover:${width}x${height}/` : `/resize:${width}x${height}/`));
-        } else {
-            let separator = url.includes("=") && url.includes(".googleusercontent.com") ? "=" : "/";
-            let parts = secureUrl.split(separator);
-
-            // Identify existing image size parameters
-            for (let i = 0; i < parts.length; i++) {
-                if (parts[i].length <= 17 && (parts[i].includes("-c") || parts[i].includes("s") || parts[i].includes("h") || parts[i].includes("w"))) {
-                    let extractedSize = parts[i].split("-")[0].replace("c", "").replace("s", "").replace("h", "").replace("w", "");
-                    if (extractedSize !== "" && !isNaN(extractedSize)) {
-                        if (parts[i].includes("s")) originalSize = Number(extractedSize);
-                        else if (parts[i].includes("h")) originalHeight = Number(extractedSize);
-                        else if (parts[i].includes("w")) originalWidth = Number(extractedSize);
-                        break;
-                    }
-                }
-            }
-
-            // Modify the URL with the new size parameters
-            if (originalSize || originalHeight || originalWidth) {
-                if (convertToWebP && (width === height && height === 0 || size === null)) {
-                    // Do nothing (skip modification if WebP is only applied)
-                } else if (width === height) {
-                    if (width < originalSize && !forceResize) return secureUrl;
-                    parts[originalSize] = "s" + width;
-                } else if (height === 0) {
-                    if (width < originalWidth && !forceResize) return secureUrl;
-                    parts[originalSize] = "w" + width;
-                } else if (width === 0) {
-                    if (height < originalHeight && !forceResize) return secureUrl;
-                    parts[originalSize] = "h" + height;
-                } else {
-                    if ((height < originalHeight || width < originalWidth) && !forceResize) return secureUrl;
-                    parts[originalSize] = "w" + width + "-h" + height;
-                }
-                if (crop) parts[originalSize] += "-c";
-                if (convertToWebP) parts[originalSize] += "-rw";
-            }
-
-            let newUrl = parts.join(separator);
-        }
-
-        // Convert image format to WebP if necessary
-        if (convertToWebP) {
-            let extensions = ["png", "gif", "jpeg", "jpg", "bmp"];
-            extensions.forEach(ext => {
-                newUrl = newUrl.replace("." + ext, ".webp").replace("." + ext.toUpperCase(), ".webp");
-            });
-        }
-
-        return newUrl;
     }
 
     function ve(e) {

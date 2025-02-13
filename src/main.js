@@ -379,7 +379,9 @@ window.main_js = function () {
 
         if (url.includes(".itn24h.com")) {
             let currentSize = url.split('/')[3];
-            newUrl = url.replace(`/${currentSize}/`, `/cover:${n}x${r}/`);
+            let w = n == 0 ? 'auto' : n;
+            let h = r == 0 ? 'auto' : r;
+            newUrl = url.replace(`/${currentSize}/`, `/cover:${w}x${h}/`);
 
             if (d) {
                 let extensions = ["png", "gif", "jpeg", "jpg", "bmp"];

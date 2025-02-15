@@ -1,3 +1,5 @@
 {
+    "/css/main.min.css": "/css/main.min.css",
+    "/js/vendor.min.js": "/js/vendor.min.js",
     "/js/main.min.js": "/js/main.min.js"
 }

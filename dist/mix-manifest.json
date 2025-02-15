@@ -1,5 +1,6 @@
 {
     "/css/main.min.css": "/css/main.min.css",
+    "/css/google-fonts.min.css": "/css/google-fonts.min.css",
     "/js/vendor.min.js": "/js/vendor.min.js",
     "/js/main.min.js": "/js/main.min.js"
 }

@@ -4788,6 +4788,8 @@ ul.social-counter {
     }
 }
 
+/* More */
+
 .firstcharacter {
     float: left;
     color: #27ae60;
@@ -5204,4 +5206,10 @@ pre.code-box {
     .post-body table {
         display: block;
     }
+}
+
+/* Extra */
+
+#post-body .separator {
+    text-align: center;
 }

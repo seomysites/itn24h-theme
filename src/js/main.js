@@ -297,13 +297,14 @@ $(function () {
         return img
     }
 
-    function FeatImage(feed, i, img) {
+    function FeatImage(feed, i, img, width = null, height = null) {
         var $c = feed[i].content.$t;
         if (feed[i].media$thumbnail) {
             var src = feed[i].media$thumbnail.url
         } else {
             src = noThumbnail
         }
+
         if ($c.indexOf($c.match(/<iframe(?:.+)?src=(?:.+)?(?:www.youtube.com)/g)) > -1) {
             if ($c.indexOf('<img') > -1) {
                 if ($c.indexOf($c.match(/<iframe(?:.+)?src=(?:.+)?(?:www.youtube.com)/g)) < $c.indexOf('<img')) {
@@ -319,7 +320,15 @@ $(function () {
         } else {
             img = noThumbnail
         }
-        var code = '<img class="post-thumb" alt="" src="' + img + '"/>';
+
+        if (img.includes('.itn24h.com') && (width || height)) {
+            let currentSize = img.split('/')[3];
+            let w = width ? width : 'auto';
+            let h = height ? height : 'auto';
+            img = img.replace(`/${currentSize}/`, `/cover:${w}x${h}/`);
+        }
+
+        var code = '<img class="post-thumb lazy-yard" alt="" src="' + img + '"/>';
         return code
     }
 
@@ -382,9 +391,50 @@ $(function () {
                     var entry = json.feed.entry;
                     if (entry != undefined) {
                         for (var i = 0, feed = entry; i < feed.length; i++) {
+                            let imgWidth = null, imgHeight = null;
+
+                            // Desktop
+                            if (window.screen.width > 1024) {
+                                if (type.match('related')) {
+                                    imgWidth = 229;
+                                    imgHeight = 120;
+                                }
+
+                                if (type.match('ticker-posts')) {
+                                    imgWidth = 35;
+                                    imgHeight = 30;
+                                }
+                            }
+
+                            // Tablet
+                            if (window.screen.width <= 1024 && window.screen.width > 768) {
+                                if (type.match('related')) {
+                                    imgWidth = 241;
+                                    imgHeight = 120;
+                                }
+
+                                if (type.match('ticker-posts')) {
+                                    imgWidth = 35;
+                                    imgHeight = 30;
+                                }
+                            }
+
+                            // Mobile
+                            if (window.screen.width <= 768) {
+                                if (type.match('related')) {
+                                    imgWidth = 75;
+                                    imgHeight = 60;
+                                }
+
+                                if (type.match('ticker-posts')) {
+                                    imgWidth = 25;
+                                    imgHeight = 30;
+                                }
+                            }
+
                             var link = post_link(feed, i),
                                 title = post_title(feed, i, link),
-                                image = FeatImage(feed, i, link),
+                                image = FeatImage(feed, i, link, imgWidth, imgHeight),
                                 tag = post_label(feed, i),
                                 author = post_author(feed, i),
                                 date = post_date(feed, i),

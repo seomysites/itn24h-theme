@@ -751,35 +751,45 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
   </div>
  <div class='clearfix'/>
    <div class='row ad-wrapper'>
- <b:section class='home-ad-top' id='home-ad-top1' maxwidgets='1' name='Home Ads Top' showaddelement='yes'>
-   <b:widget id='HTML21' locked='true' title='Ad Code' type='HTML' visible='false'>
-     <b:widget-settings>
-       <b:widget-setting name='content'><![CDATA[<a class="sora-ads-full" href="javascript:;">Responsive Advertisement</a>
-<style>
-.sora-ads-full {
-  display: block;
-    background-color: #eee;
-    text-align: center;
-    font-size: 13px;
-    color: #aaaaaa;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 90px;
-    border: 1px solid #ccc;
-}
-</style>]]></b:widget-setting>
-     </b:widget-settings>
-     <b:includable id='main'>
-  <b:include name='widget-title'/>
-  <div class='widget-content'>
-    <data:content/>
-  </div>
-</b:includable>
-   </b:widget>
- </b:section>
+		<b:section class='home-ad-top' id='home-ad-top1' maxwidgets='1' name='Home Ads Top' showaddelement='yes'>
+		<b:widget id='HTML21' locked='true' title='Ad Code' type='HTML' visible='false'>
+			<b:widget-settings>
+			<b:widget-setting name='content'><![CDATA[<a class="sora-ads-full" href="javascript:;">Responsive Advertisement</a>
+		<style>
+		.sora-ads-full {
+		display: block;
+			background-color: #eee;
+			text-align: center;
+			font-size: 13px;
+			color: #aaaaaa;
+			font-weight: 400;
+			font-style: italic;
+			line-height: 90px;
+			border: 1px solid #ccc;
+		}
+		</style>]]>
+		</b:widget-setting>
+			</b:widget-settings>
+			<b:includable id='main'>
+		<b:include name='widget-title'/>
+		<div class='widget-content'>
+			<data:content/>
+		</div>
+		</b:includable>
+		</b:widget>
+		</b:section>
     </div>
   <div class='clearfix'/>
  
+ <b:if cond='data:view.isHomepage'>
+<!-- Featured Wrapper -->
+	<div class='row' id='hot-wrapper'>
+		<b:section class='section' id='hot-section' name='Hot Posts' showaddelement='yes'>
+
+		</b:section>
+    </div>
+  <div class='clearfix'/>
+  </b:if>
   
   <!-- Content Wrapper -->
   <div class='row' id='content-wrapper'>

@@ -404,6 +404,21 @@ $(function () {
                                     imgWidth = 35;
                                     imgHeight = 30;
                                 }
+
+                                if(type.match('hot-posts')) {
+                                    if (i == 0) {
+                                        imgWidth = 615;
+                                        imgHeight = 415;
+                                    } else {
+                                        imgWidth = 180;
+                                        imgHeight = 125;
+                                    }
+                                }
+
+                                if (type.match('grid-post')) {
+                                    imgWidth = 339;
+                                    imgHeight = 180;
+                                }
                             }
 
                             // Tablet
@@ -417,6 +432,21 @@ $(function () {
                                     imgWidth = 35;
                                     imgHeight = 30;
                                 }
+
+                                if(type.match('hot-posts')) {
+                                    if (i == 0) {
+                                        imgWidth = 615;
+                                        imgHeight = 415;
+                                    } else {
+                                        imgWidth = 180;
+                                        imgHeight = 125;
+                                    }
+                                }
+
+                                if (type.match('grid-post')) {
+                                    imgWidth = 339;
+                                    imgHeight = 180;
+                                }
                             }
 
                             // Mobile
@@ -429,6 +459,21 @@ $(function () {
                                 if (type.match('ticker-posts')) {
                                     imgWidth = 25;
                                     imgHeight = 30;
+                                }
+
+                                if(type.match('hot-posts')) {
+                                    if (i == 0) {
+                                        imgWidth = 280;
+                                        imgHeight = 320;
+                                    } else {
+                                        imgWidth = 280;
+                                        imgHeight = 150;
+                                    }
+                                }
+
+                                if (type.match('grid-post')) {
+                                    imgWidth = 280;
+                                    imgHeight = 180;
                                 }
                             }
 

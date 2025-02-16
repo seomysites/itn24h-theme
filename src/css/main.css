@@ -182,7 +182,6 @@ a.quickedit,
     position: relative
 }
 
-.widget>h2,
 .widget>h3 {
     display: none
 }
@@ -5212,4 +5211,19 @@ pre.code-box {
 
 #post-body .separator {
     text-align: center;
+}
+
+.widget>h2 {
+    color: #fff;
+    font-size: 12px;
+    line-height: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    background: #1f2024;
+    color: #fff;
+    display: block;
+    height: 40px;
+    margin: 0 0 20px;
+    position: relative;
+    width: 100%;
 }

@@ -6,7 +6,7 @@
     
  	<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' media='print' onload='this.media=&apos;all&apos;' rel='stylesheet'/>
     <link href='https://cdn.jsdelivr.net/gh/seomysites/itn24h-theme@1.0.3/dist/css/google-fonts.min.css' media='print' onload='this.media=&apos;all&apos;' rel='stylesheet'/>
-    <link href='https://cdn.jsdelivr.net/gh/seomysites/itn24h-theme@1.0.3/dist/css/main.min.css' rel='stylesheet'/>
+    <link href='https://cdn.jsdelivr.net/gh/seomysites/itn24h-theme@1.0.7/dist/css/main.min.css' rel='stylesheet'/>
     
  <b:if cond='!data:view.isLayoutMode'>
 <!-- Template Style CSS -->
@@ -299,8 +299,12 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
               <a expr:href='data:post.url'><data:post.title/></a>
             </h2>
       
-                    <p class='post-snippet'><b:eval expr='data:post.snippets.short snippet { length: 85 }'/></p>      <div class='post-meta'>
-              <span class='post-author'><a expr:href='data:post.author.profileUrl' expr:title='data:post.author.name' target='_blank'><data:post.author.name/></a></span><span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
+                    <p class='post-snippet'><b:eval expr='data:post.snippets.short snippet { length: 85 }'/></p>      
+                    <div class='post-meta'>
+              <span class='post-author'>
+                <a expr:title='data:post.author.name' href='javascript:void();'><data:post.author.name/></a>
+                    </span>
+                    <span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
             </div>
           </div>
                 </div>
@@ -393,7 +397,7 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
               <a expr:href='data:post.url'><data:post.title/></a>
             </h2>
             <div class='post-meta'>
-              <span class='post-author'><a expr:href='data:post.author.profileUrl' expr:title='data:post.author.name' target='_blank'><data:post.author.name/></a></span><span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
+              <span class='post-author'><a href='javascript:void();' expr:title='data:post.author.name' target='_blank'><data:post.author.name/></a></span><span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
             </div>
           </div>
         </div>
@@ -697,13 +701,21 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
         <b:section class='main-menu' id='main-menu' maxwidgets='1' name='Main Menu' showaddelement='yes'>
           <b:widget id='LinkList74' locked='true' title='Link List' type='LinkList' version='2' visible='true'>
             <b:widget-settings>
-              <b:widget-setting name='sorting'>NONE</b:widget-setting>
-              <b:widget-setting name='text-1'>Tech</b:widget-setting>
-              <b:widget-setting name='link-1'><![CDATA[/search/label/Tech?&max-results=10]]></b:widget-setting>
+              <b:widget-setting name='link-5'>/search/label/Android</b:widget-setting>
+              <b:widget-setting name='link-6'>/search/label/Game</b:widget-setting>
+              <b:widget-setting name='link-3'>/search/label/Windows</b:widget-setting>
+              <b:widget-setting name='link-4'>/search/label/iPhone</b:widget-setting>
+              <b:widget-setting name='text-1'>Tech News</b:widget-setting>
               <b:widget-setting name='text-0'>Home</b:widget-setting>
+              <b:widget-setting name='text-3'>Windows</b:widget-setting>
+              <b:widget-setting name='text-2'>Marketing</b:widget-setting>
+              <b:widget-setting name='text-5'>Android</b:widget-setting>
+              <b:widget-setting name='text-4'>iPhone</b:widget-setting>
+              <b:widget-setting name='text-6'>Game</b:widget-setting>
+              <b:widget-setting name='sorting'>NONE</b:widget-setting>
+              <b:widget-setting name='link-1'>/search/label/Tech</b:widget-setting>
               <b:widget-setting name='link-2'>/search/label/Marketing</b:widget-setting>
               <b:widget-setting name='link-0'>/</b:widget-setting>
-              <b:widget-setting name='text-2'>Marketing</b:widget-setting>
             </b:widget-settings>
             <b:includable id='main'>
               <b:include name='content'/>
@@ -784,37 +796,36 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
 	<!-- Featured Wrapper -->
 	<div class='row' id='hot-wrapper'>
 		<b:section class='section' id='hot-section' name='Hot Posts' showaddelement='yes'>
-			<b:widget id='HTML1' locked='false' title='Technology' type='HTML' visible='true'>
-			<b:widget-settings>
-				<b:widget-setting name='content'>Tech/hot-posts</b:widget-setting>
-			</b:widget-settings>
-			<b:includable id='main'>
+<b:widget id='HTML1' locked='false' title='Technology' type='HTML' version='2' visible='true'>
+  <b:widget-settings>
+    <b:widget-setting name='content'>Tech/hot-posts</b:widget-setting>
+  </b:widget-settings>
+  <b:includable id='main'>
 			<b:include name='widget-title'/>
 			<div class='widget-content'>
 				<data:content/>
 			</div>
 			</b:includable>
-			</b:widget>
-			<b:widget id='HTML3' locked='false' title='Marketing' type='HTML' visible='true'>
-			<b:widget-settings>
-				<b:widget-setting name='content'>6/Marketing/grid-post</b:widget-setting>
-			</b:widget-settings>
-			<b:includable id='main'>
-			<b:include name='widget-title'/>
-			<div class='widget-content'>
-				<data:content/>
-			</div>
-			</b:includable>
-			</b:widget>
-		</b:section>
+</b:widget>
+</b:section>
     </div>
   <div class='clearfix'/>
 
   	<div class='featured-grid1' id='grid-wrapper'>
 		<div class='container row'>
 			<b:section class='featured-posts section' id='featured-posts1' name='Grid Post Section 1' showaddelement='yes'>
-				
-			</b:section>
+<b:widget id='HTML3' locked='false' title='Marketing' type='HTML' version='2' visible='true'>
+  <b:widget-settings>
+    <b:widget-setting name='content'>6/Marketing/grid-post</b:widget-setting>
+  </b:widget-settings>
+  <b:includable id='main'>
+			<b:include name='widget-title'/>
+			<div class='widget-content'>
+				<data:content/>
+			</div>
+			</b:includable>
+</b:widget>
+</b:section>
 		</div>
 	</div>
   <div class='clearfix'/>
@@ -837,7 +848,7 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
               <b:widget-setting name='authorLabel'>by</b:widget-setting>
               <b:widget-setting name='showCommentLink'>true</b:widget-setting>
               <b:widget-setting name='style.urlcolor'>#ffffff</b:widget-setting>
-              <b:widget-setting name='showAuthor'>false</b:widget-setting>
+              <b:widget-setting name='showAuthor'>true</b:widget-setting>
               <b:widget-setting name='style.linkcolor'>#ffffff</b:widget-setting>
               <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
               <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
@@ -873,7 +884,7 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
             </b:includable>
             <b:includable id='aboutPostAuthor'>
   <div class='author-name'>
-    <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+    <a class='g-profile' href='javascript:void()' rel='author' title='author profile'>
       <span>
         <data:post.author.name/>
       </span>
@@ -1269,7 +1280,7 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
             <b:includable id='postAuthor' var='post'>
               <!-- Post Author -->
               <b:if cond='data:allBylineItems.author'>
-                <span class='post-author'><a expr:href='data:post.author.profileUrl' expr:title='data:post.author.name' target='_blank'><data:post.author.name/></a></span>
+                <span class='post-author'><a href='javascript:void()' expr:title='data:post.author.name'><data:post.author.name/></a></span>
               </b:if>
             </b:includable>
             <b:includable id='postBody' var='post'> 
@@ -1914,7 +1925,7 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
     <span class='fn'>
       <b:if cond='data:post.author.profileUrl'>
         <meta expr:content='data:post.author.profileUrl'/>
-        <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+        <a class='g-profile' href='javascript:void()' rel='author' title='author profile'>
           <span><data:post.author.name/></span>
         </a>
       <b:else/>
@@ -2424,7 +2435,7 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
             </h2>
       
                     <p class='post-snippet'><b:eval expr='data:post.snippets.short snippet { length: 85 }'/></p>      <div class='post-meta'>
-              <span class='post-author'><a expr:href='data:post.author.profileUrl' expr:title='data:post.author.name' target='_blank'><data:post.author.name/></a></span><span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
+              <span class='post-author'><a href='javascript:void()' expr:title='data:post.author.name'><data:post.author.name/></a></span><span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
             </div>
           </div>
                 </div>
@@ -2507,7 +2518,7 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
     <span class='fn'>
       <b:if cond='data:post.author.profileUrl'>
         <meta expr:content='data:post.author.profileUrl'/>
-        <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+        <a class='g-profile' href='javascript:void()' rel='author' title='author profile'>
           <span><data:post.author.name/></span>
         </a>
       <b:else/>
@@ -2788,7 +2799,7 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
     <span class='fn'>
       <b:if cond='data:post.author.profileUrl'>
         <meta expr:content='data:post.author.profileUrl'/>
-        <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+        <a class='g-profile' href='javascript:void()' rel='author' title='author profile'>
           <span><data:post.author.name/></span>
         </a>
       <b:else/>
@@ -2818,7 +2829,7 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
               <a expr:href='data:post.url'><data:post.title/></a>
             </h2>
             <div class='post-meta'>
-              <span class='post-author'><a expr:href='data:post.author.profileUrl' expr:title='data:post.author.name' target='_blank'><data:post.author.name/></a></span><span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
+              <span class='post-author'><a href='javascript:void()' expr:title='data:post.author.name'><data:post.author.name/></a></span><span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
             </div>
           </div>
         </div>
@@ -3145,7 +3156,7 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
     <span class='fn'>
       <b:if cond='data:post.author.profileUrl'>
         <meta expr:content='data:post.author.profileUrl'/>
-        <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+        <a class='g-profile' href='javascript:void()' rel='author' title='author profile'>
           <span><data:post.author.name/></span>
         </a>
       <b:else/>
@@ -3356,7 +3367,7 @@ var monthFormat = ["January", "February", "March", "April", "May", "June", "July
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' type='text/javascript'/>
 <script async='true' src='https://cdn.jsdelivr.net/gh/seomysites/itn24h-theme@1.0.2/dist/js/vendor.min.js' type='text/javascript'/>
 <!-- Theme Functions JS <script src='https://cdn.jsdelivr.net/gh/seomysites/itn24h-theme@1.0.2/dist/js/main.min.js' type='text/javascript'/> -->
-<script async='true' src='https://cdn.jsdelivr.net/gh/seomysites/itn24h-theme@1.0.4/dist/js/main.min.js' type='text/javascript'/>
+<script async='true' src='https://cdn.jsdelivr.net/gh/seomysites/itn24h-theme@1.0.5/dist/js/main.min.js' type='text/javascript'/>
 
 <!-- Pagination Scripts -->
 <b:if cond='data:view.isMultipleItems'>

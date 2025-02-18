@@ -1,4 +1,5 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
+const purgecss = require('@fullhuman/postcss-purgecss').default;
 
 mix.setPublicPath('dist');
 
@@ -21,4 +22,21 @@ mix.css(
     'dist/css/google-fonts.min.css'
 );
 
-mix.css('src/css/main.css', 'dist/css/main.min.css');
+mix.css(
+    [
+        'src/css/google-fonts.css',
+        'src/css/main.css'
+    ], 
+    'dist/css/main.min.css'
+).options({
+    postCss: [
+        purgecss({
+            content: [
+                './resources/**/*.html',
+                './resources/js/**/*.js',
+            ],
+            defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+        })
+    ],
+    processCssUrls: false,
+});

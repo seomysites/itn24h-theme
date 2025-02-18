@@ -24,14 +24,25 @@ mix.combine(
 
 mix.styles(
     [
-        'src/css/fontawesome-all.min.css'
+        'src/css/fontawesome-all.min.css',
+        'src/css/google-fonts.css',
     ],
     'dist/css/all.min.css'
-);
+).options({
+    postCss: [
+        purgecss({
+            content: [
+                './resources/**/*.html',
+                './resources/**/*.js',
+            ],
+            defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+        })
+    ],
+    processCssUrls: false,
+});
 
 mix.styles(
     [
-        'src/css/google-fonts.css',
         'src/css/main.css'
     ], 
     'dist/css/main.min.css'

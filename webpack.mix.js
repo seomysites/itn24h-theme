@@ -17,12 +17,19 @@ mix.combine(
     'dist/js/main.min.js'
 );
 
-mix.css(
-    'src/css/google-fonts.css',
-    'dist/css/google-fonts.min.css'
+// mix.css(
+//     'src/css/google-fonts.css',
+//     'dist/css/google-fonts.min.css'
+// );
+
+mix.styles(
+    [
+        'src/css/fontawesome-all.min.css'
+    ],
+    'dist/css/all.min.css'
 );
 
-mix.css(
+mix.styles(
     [
         'src/css/google-fonts.css',
         'src/css/main.css'
@@ -33,7 +40,7 @@ mix.css(
         purgecss({
             content: [
                 './resources/**/*.html',
-                './resources/js/**/*.js',
+                './resources/**/*.js',
             ],
             defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
         })

@@ -12,7 +12,10 @@ mix.combine([
 ], 'dist/js/vendor.min.js');
 
 mix.combine(
-    'src/js/main.js', 
+    [
+        'src/js/main.js',
+        'src/js/load-more.js',
+    ],
     'dist/js/main.min.js'
 );
 

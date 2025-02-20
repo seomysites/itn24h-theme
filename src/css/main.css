@@ -5227,3 +5227,7 @@ pre.code-box {
     position: relative;
     width: 100%;
 }
+
+#post-body {
+    text-align: justify;
+}
